@@ -26,7 +26,14 @@ def main():
 
     # # Output merged & cleaned dataframe to csv file
     # dest_map.to_csv(write, float_format='%.3f', index=False)
-    print(df)
+
+
+    # 2022-04-11T00:00:40+02:00,[22],[86]
+    # 2022-04-11T00:10:24+02:00,[42],[122]
+    # 2022-04-11T00:29:54+02:00,[22],[104]
+    # 2022-04-11T00:39:37+02:00,[41],[103]
+    # 2022-04-11T00:49:25+02:00,[46],[102]
+    print_col_reversed(df['start'])
 
 # takes in an np arr of column names
 # returns an np arr of float converted columns
@@ -63,7 +70,7 @@ def split_cols(cols):
 # header - np array of the column headers
 def print_col_reversed(header):
     for i in reversed(range(len(header))):
-        print(header[i])
+        print(header[i].split('T')[1])
 
 # prints out the column headers in reversed order with a
 # data value paired from select row
