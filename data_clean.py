@@ -6,7 +6,7 @@ import numpy as np
 #
 
 # The read csv file
-read = 'raw_hr_hr.csv'
+read = 'raw_hr_hr_sm.csv'
 # The write csv file
 write = 'cleaned_raw_hr_hr.csv'
 # The csv file with as a data frame
@@ -15,70 +15,49 @@ df = pd.read_csv(read)
 np.set_printoptions(suppress=True)
 
 def main():
-    # # resulting merged & cleaned data frame
-    # dest_map = {}
+    # resulting merged & cleaned data frame
+    dest_map = {}
     
-    # # Waste Treatment data
-    # wt_keep = np.array(['WT reclaimed wastewater released by wastewater facilities','WT number of wastewater facilities','WT number of public wastewater facilities',
-    #                     'WT returns by public wastewater facilities', 'WT reclaimed wastewater released by public wastewater facilities'])
-    # wt_map = {}
-    # dest_map.update(split(wt_keep, wt_map))
+    dest_map.update(conv_to_pacific(df, 'start', 'datetime'))
+    dest_map.update(conv_col_to_int(df, 'value', 'heartrate'))
+    dest_map.update(conv_col_to_int(df, 'duration', 'duration'))
 
-    # # Output merged & cleaned dataframe to csv file
-    # dest_map.to_csv(write, float_format='%.3f', index=False)
+    dest_df = pd.DataFrame.from_dict(dest_map)
+    dest_df.to_csv(write, float_format='%.3f', index=False)
 
+def conv_col_to_int(df, colname, newcolname):
+    c = df[colname].to_numpy()
+    col = [np.fromstring(c[i].replace('[', '').replace(']', '').replace(',', ' '), dtype=int, sep= ' ') for i in range(len(c))]
+    return {newcolname: {i:col[i][0] if len(col[i]==1) else int(np.mean(col[i])) for i in range(len(col))}}
 
-    # 2022-04-11T00:00:40+02:00,[22],[86]
-    # 2022-04-11T00:10:24+02:00,[42],[122]
-    # 2022-04-11T00:29:54+02:00,[22],[104]
-    # 2022-04-11T00:39:37+02:00,[41],[103]
-    # 2022-04-11T00:49:25+02:00,[46],[102]
-    print_col_reversed(df['start'])
+def conv_to_pacific(df, colname, newcolname):
+    col = df[colname].to_numpy()
+    dati = pd.to_datetime(col).astype('datetime64[ns, US/Pacific]').astype('str')
+    return {newcolname: {i:dati[i][:len(dati[i])-6] for i in range(len(dati))}}
 
-# takes in an np arr of column names
-# returns an np arr of float converted columns
-def cols_to_conv_np(cols):
-    return np.array([conv_col_to_float(df[cols[i]]) for i in range(len(cols))])
+def cols_split(col, spliton):
+    cols = []
+    for i in range(len(col)):
+        cols += [col[i].split(spliton)]
+    return np.array(cols).transpose()
 
-# Takes in a column, converts column values to float, zeroes out missing values
-# col - the input column 
-# returns an np array of the col
-def conv_col_to_float(col):
-    # print([ord(c) for c in c1[i]])
-    c_arr = col.to_numpy()
-    return np.array([0.00 if (str(c_arr[i])[0] == str(chr(45))) else float(c_arr[i]) for i in range(len(col))])
+def print_n_rows_info(df, n):
+    rows = df.to_numpy()
+    cols = df.columns.to_numpy()
+    if (n > len(rows)):
+        n = len(rows)
+    row = ""
+    for i in range(n):
+        r = rows[i]
+        for j in range(len(r)):
+            row += str(cols[j]) + ":  " + str(r[j]) + ", "
+        print(row[:len(row)-2])
+        row = ""
 
-# keeps select columns, merges select columns
-# keepCols - an np array of column names to keep
-# mergeCols - a map of new col names to an array of column names to merge
-# Returns a map of new columns to names
-def split(keepCols, mergeCols):
-    # sorry
-    colMap = {{} if (len(keepCols) == 0) else keepCols[i]:conv_col_to_float(df[keepCols[i]]) for i in range(len(keepCols))}
-    if (mergeCols):
-        colMap.update({k:split_cols(cols_to_conv_np(mergeCols[k])) for k in mergeCols.keys()})
-    return colMap
-
-# Takes in columns as np arrays and merges 
-# --column data values must be of type float--
-# cols - np array of columns being merged
-# returns a map of name to col
-def split_cols(cols):
-    return np.sum(cols, axis = 0)
-
-# prints out the column headers in reversed order
-# header - np array of the column headers
-def print_col_reversed(header):
-    for i in reversed(range(len(header))):
-        print(header[i].split('T')[1])
-
-# prints out the column headers in reversed order with a
-# data value paired from select row
-# header - np array of the column headers
-def print_col_reversed_c(header, row):
-    fRow = df.iloc[row].to_numpy()
-    for i in reversed(range(len(header))):
-        print(header[i] + ' ' + str(fRow[i]))
+def print_cols(df):
+    colnames = df.columns.to_numpy()
+    for i in range(len(colnames)):
+        print(colnames[i])
 
 if __name__ == "__main__":
     main()
