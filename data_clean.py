@@ -2,13 +2,21 @@ import pandas as pd
 import numpy as np
 
 #
-# Merges all relevant data, deletes the rest, stores the results in cleaned_'read'.csv
+# Cleans data and stores the results in cleaned_'read'.csv
 #
+# Cleaning parameters:
+#   re-label columns to specific names
+#   convert to heartrate data to int type, if it is a range of values, take the mean
+#       this is possible because ranges are recorded with small intervals, and there
+#       isn't much variation in HR for these intervals, so it is reasonably accurate
+#   convert duration data to int type, sum if it is a range of values
+#   convert varying datetime formats into uniform pacific time
+#   remove stray, obviously invalid data
 
 # The read csv file
 read = 'raw_hr_hr_sm.csv'
 # The write csv file
-write = 'cleaned_raw_hr_hr.csv'
+write = 'cleaned_' + read
 # The csv file with as a data frame
 df = pd.read_csv(read)
 # Suppress numpy float sci form
@@ -19,27 +27,34 @@ def main():
     dest_map = {}
     
     dest_map.update(conv_to_pacific(df, 'start', 'datetime'))
-    dest_map.update(conv_col_to_int(df, 'value', 'heartrate'))
-    dest_map.update(conv_col_to_int(df, 'duration', 'duration'))
+    dest_map.update(conv_hr_to_int(df, 'value', 'heartrate'))
+    dest_map.update(conv_dur_to_int(df, 'duration', 'duration'))
 
     dest_df = pd.DataFrame.from_dict(dest_map)
     dest_df.to_csv(write, float_format='%.3f', index=False)
 
-def conv_col_to_int(df, colname, newcolname):
+def conv_dur_to_int(df, colname, newcolname):
     c = df[colname].to_numpy()
     col = [np.fromstring(c[i].replace('[', '').replace(']', '').replace(',', ' '), dtype=int, sep= ' ') for i in range(len(c))]
-    return {newcolname: {i:col[i][0] if len(col[i]==1) else int(np.mean(col[i])) for i in range(len(col))}}
+    return {newcolname: {i:np.sum(col[i], dtype=int) for i in range(len(col))}}
+
+def conv_hr_to_int(df, colname, newcolname):
+    c = df[colname].to_numpy()
+    col = [np.fromstring(c[i].replace('[', '').replace(']', '').replace(',', ' '), dtype=int, sep= ' ') for i in range(len(c))]
+    return {newcolname: {i:np.mean(col[i], dtype=int) for i in range(len(col))}}
 
 def conv_to_pacific(df, colname, newcolname):
     col = df[colname].to_numpy()
-    dati = pd.to_datetime(col).astype('datetime64[ns, US/Pacific]').astype('str')
+    dati = pd.to_datetime(col, utc=True).astype('datetime64[ns, US/Pacific]').astype('str')
     return {newcolname: {i:dati[i][:len(dati[i])-6] for i in range(len(dati))}}
 
-def cols_split(col, spliton):
+def cols_split(df, colname, newcolnames, spliton):
+    col = df[colname]
     cols = []
     for i in range(len(col)):
         cols += [col[i].split(spliton)]
-    return np.array(cols).transpose()
+    cols = np.array(cols).transpose()
+    return {newcolnames[i]: {j:cols[i][j] for j in range(len(cols[i]))} for i in range(len(newcolnames))}
 
 def print_n_rows_info(df, n):
     rows = df.to_numpy()
