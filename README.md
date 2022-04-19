@@ -1,10 +1,3 @@
-# am-i-getting-carbon-monoxide-poisoning
-uh oh, hmmmmmmm
-uh oh, hmmmmmmm
-uh oh, hmmmmmmm
-uh oh, hmmmmmmm
-uh oh, hmmmmmmm
-uh oh, hmmmmmmm
-uh oh, hmmmmmmm
-uh oh, hmmmmmmm
-uh oh, hmmmmmmm
+# Analyzing 7 months of heartrate data
+
+Visualization Link: 
