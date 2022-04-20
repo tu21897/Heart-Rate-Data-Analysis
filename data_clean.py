@@ -1,8 +1,8 @@
-import pandas as pd
-import numpy as np
-
+# data_clean.py - Tu Nguyen 2022
 #
-# Cleans data and stores the results in cleaned_'read'.csv
+# ----------------------------------
+#
+# Cleans the heart rate data and stores the results in cleaned_'read'.csv
 #
 # Cleaning parameters:
 #   re-label columns to specific names
@@ -12,6 +12,16 @@ import numpy as np
 #   convert duration data to int type, sum if it is a range of values
 #   convert varying datetime formats into uniform pacific time
 #   remove stray, obviously invalid data
+#
+# Resulting columns:
+#   datetime (year/month/day/hour/minute/second) - string
+#   heartrate (bpm) - int
+#   duration (s) - int
+#
+
+# Imports
+import pandas as pd
+import numpy as np
 
 # The read csv file
 read = 'raw_hr_hr.csv'
@@ -37,13 +47,52 @@ def main():
     dest_df = rows_drop_invalid(pd.DataFrame.from_dict(dest_map), [int, str])
 
     # keep data from selected months
-    dest_df = rows_keep_drop_months(dest_df, ['2022-04-', '2022-03-', '2021-10-', '2021-11-'])
+    dest_df = rows_keep_months(dest_df, ['2022-04-', '2022-03-', '2021-10-', '2021-11-'])
+
+    # sort data by datetimes
+    dest_df = dest_df.sort_values(by=['datetime'], axis=0)
+
+    tk_map = {}
+    tk_map.update(generate_tk_map_range(pd.to_datetime('2021-10-01 00:00:00'), pd.to_datetime('2021-12-01 00:00:00'), 10, 'm'))
+    tk_map.update(generate_tk_map_range(pd.to_datetime('2022-03-01 00:00:00'), pd.to_datetime('2022-04-20 22:00:00'), 10, 'm'))
+    dest_df = rows_standardize_intervals(dest_df, tk_map)
 
     # output results to write csv
-    dest_df.to_csv(write, float_format='%.3f', index=False)
+    dest_df.to_csv(write, index=False)
 
 
-def rows_keep_drop_months(df, months):
+def rows_standardize_intervals(df, tk_map):
+    ret_rows = []
+    times = df['datetime'].to_numpy()
+    cols = df.to_numpy()
+    for i, dt in enumerate(times):
+        conv_time = dt[0:14] + str(int(dt[14:16]) // 10 * 10) + ':00'
+        if (len(conv_time) < len(dt)):
+            conv_time = conv_time[:len(conv_time) - 3] + '0' + conv_time[len(conv_time) - 3:]
+        tk_map[conv_time] += [cols[i]]
+    for i, tk in enumerate(tk_map):
+        rows = tk_map[tk]
+        if (len(rows) == 0):
+            ret_rows.append({'datetime': tk, 'heartrate': None, 'duration': None})
+        else:
+            heartrates = [rows[j][1] for j in range(len(rows))]
+            durations = [rows[j][2] for j in range(len(rows))]
+            heartrate = np.average(heartrates, weights=durations)
+            duration = sum(durations)
+            ret_rows.append({'datetime': tk, 'heartrate': int(heartrate), 'duration': int(duration)})
+    return pd.DataFrame.from_dict(ret_rows)
+
+def generate_tk_map_range(start, end, interval, unit):
+    tk_map = {str(start): []}
+    time = start
+    inc = pd.Timedelta(interval, unit)
+    nt = time + inc
+    while (str(end) not in str(nt)):
+        tk_map[str(nt)] = []
+        nt += inc
+    return tk_map
+
+def rows_keep_months(df, months):
     rows = df.to_numpy()
     ev = ""
     for month in months:

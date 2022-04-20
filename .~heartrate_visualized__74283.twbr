@@ -1,0 +1,756 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20214.22.0108.1039                               -->
+<workbook original-version='18.1' source-build='2021.4.3 (20214.22.0108.1039)' source-platform='mac' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <_.fcp.AccessibleZoneTabOrder.true...AccessibleZoneTabOrder />
+    <_.fcp.AnimationOnByDefault.true...AnimationOnByDefault />
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <GroupAction />
+    <_.fcp.GroupActionAddRemove.true...GroupActionAddRemove />
+    <_.fcp.MarkAnimation.true...MarkAnimation />
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+    <SetMembershipControl />
+    <SheetIdentifierTracking />
+    <WindowsPersistSimpleIdentifiers />
+    <ZoneBackgroundTransparency />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <_.fcp.AnimationOnByDefault.false...style>
+    <_.fcp.AnimationOnByDefault.false..._.fcp.MarkAnimation.true...style-rule element='animation'>
+      <_.fcp.AnimationOnByDefault.false...format attr='animation-on' value='ao-on' />
+    </_.fcp.AnimationOnByDefault.false..._.fcp.MarkAnimation.true...style-rule>
+  </_.fcp.AnimationOnByDefault.false...style>
+  <datasources>
+    <datasource caption='cleaned_raw_hr_hr' inline='true' name='federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='cleaned_raw_hr_hr' name='textscan.086t5a70tei4x7156do3y0b3xtmr'>
+            <connection class='textscan' directory='/Users/tunguyen/Documents/heartrate-data-analysis' filename='cleaned_raw_hr_hr.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='textscan.086t5a70tei4x7156do3y0b3xtmr' name='cleaned_raw_hr_hr.csv' table='[cleaned_raw_hr_hr#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='datetime' name='datetime' ordinal='0' />
+            <column datatype='integer' name='heartrate' ordinal='1' />
+            <column datatype='integer' name='duration' ordinal='2' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='textscan.086t5a70tei4x7156do3y0b3xtmr' name='cleaned_raw_hr_hr.csv' table='[cleaned_raw_hr_hr#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='datetime' name='datetime' ordinal='0' />
+            <column datatype='integer' name='heartrate' ordinal='1' />
+            <column datatype='integer' name='duration' ordinal='2' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[cleaned_raw_hr_hr.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>datetime</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[datetime]</local-name>
+            <parent-name>[cleaned_raw_hr_hr.csv]</parent-name>
+            <remote-alias>datetime</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[cleaned_raw_hr_hr.csv_0672E562488B4001AE584051513C2FD0]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>heartrate</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[heartrate]</local-name>
+            <parent-name>[cleaned_raw_hr_hr.csv]</parent-name>
+            <remote-alias>heartrate</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[cleaned_raw_hr_hr.csv_0672E562488B4001AE584051513C2FD0]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>duration</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[duration]</local-name>
+            <parent-name>[cleaned_raw_hr_hr.csv]</parent-name>
+            <remote-alias>duration</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[cleaned_raw_hr_hr.csv_0672E562488B4001AE584051513C2FD0]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='zero' datatype='integer' name='[Calculation_4102075598652256258]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='0' />
+      </column>
+      <column caption='HR stats' datatype='string' name='[Calculation_4102075598652944387 1]' role='measure' type='nominal'>
+        <calculation class='tableau' formula='&quot;HR Interval Stats&#10;[♥ BPM]&#10;&#10;Selected Time Interval&#10;4/20/2021&#10;|&#10;4/20/2022&#10;&#10;Min&#10;&quot; + STR(MIN([heartrate])) + &quot; BPM&#10;&#10;Max&#10;&quot; + STR(MAX([heartrate])) + &quot; BPM&#10;&#10;Mean&#10;&quot; + STR(INT(AVG([heartrate]))) + &quot; BPM&#10;&#10;Median&#10;&quot; + STR(INT(MEDIAN([heartrate]))) + &quot; BPM&quot;' />
+      </column>
+      <_.fcp.ObjectModelTableType.true...column caption='cleaned_raw_hr_hr.csv' datatype='table' name='[__tableau_internal_object_id__].[cleaned_raw_hr_hr.csv_0672E562488B4001AE584051513C2FD0]' role='measure' type='quantitative' />
+      <column caption='Datetime' datatype='datetime' name='[datetime]' role='dimension' type='ordinal' />
+      <column caption='Duration' datatype='integer' name='[duration]' role='measure' type='quantitative' />
+      <column caption='Heartrate' datatype='integer' name='[heartrate]' role='measure' type='quantitative' />
+      <group caption='Datetime Set' name='[Datetime Set]' name-style='unqualified' user:ui-builder='filter-group'>
+        <groupfilter from='#2021-11-22 05:53:06#' function='range' level='[datetime]' to='#2022-04-19 22:16:23#' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+      </group>
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='cleaned_raw_hr_hr.csv' id='cleaned_raw_hr_hr.csv_0672E562488B4001AE584051513C2FD0'>
+            <properties context=''>
+              <relation connection='textscan.086t5a70tei4x7156do3y0b3xtmr' name='cleaned_raw_hr_hr.csv' table='[cleaned_raw_hr_hr#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                  <column datatype='datetime' name='datetime' ordinal='0' />
+                  <column datatype='integer' name='heartrate' ordinal='1' />
+                  <column datatype='integer' name='duration' ordinal='2' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+  </datasources>
+  <shared-views>
+    <shared-view name='federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4'>
+      <datasources>
+        <datasource caption='cleaned_raw_hr_hr' name='federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4' />
+      </datasources>
+      <datasource-dependencies datasource='federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4'>
+        <column caption='Datetime' datatype='datetime' name='[datetime]' role='dimension' type='ordinal' />
+        <column-instance column='[datetime]' derivation='Month' name='[mn:datetime:ok]' pivot='key' type='ordinal' />
+      </datasource-dependencies>
+      <filter class='categorical' column='[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[mn:datetime:ok]'>
+        <groupfilter function='member' level='[mn:datetime:ok]' member='4' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+      </filter>
+    </shared-view>
+  </shared-views>
+  <actions>
+    <edit-group-action caption='Set1' name='[Action1_B99850A126D84528B6224BD41F3E1EB5]'>
+      <activation type='on-select' />
+      <source dashboard='Dashboard' type='sheet' worksheet='Selector' />
+      <_.fcp.GroupActionAddRemove.true...add-or-remove-marks value='assign' />
+      <params>
+        <param name='selection-clear-set-option' value='show-all' />
+        <param name='target-group' value='[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[Datetime Set]' />
+      </params>
+    </edit-group-action>
+  </actions>
+  <worksheets>
+    <worksheet name='Graph'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontsize='20'>Heart Rate Analysis Dashboard</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='cleaned_raw_hr_hr' name='federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4'>
+            <column-instance column='[datetime]' derivation='Attribute' name='[attr:datetime:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[heartrate]' derivation='Attribute' name='[attr:heartrate:qk]' pivot='key' type='quantitative' />
+            <column caption='Datetime' datatype='datetime' name='[datetime]' role='dimension' type='ordinal' />
+            <column caption='Duration' datatype='integer' name='[duration]' role='measure' type='quantitative' />
+            <column caption='Heartrate' datatype='integer' name='[heartrate]' role='measure' type='quantitative' />
+            <column-instance column='[datetime]' derivation='Month' name='[mn:datetime:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[duration]' derivation='Sum' name='[sum:duration:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[heartrate]' derivation='Sum' name='[sum:heartrate:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[Datetime Set]'>
+            <groupfilter function='level-members' level='[datetime]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='quantitative' column='[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[attr:heartrate:qk]' included-values='all' />
+          <slices>
+            <column>[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[mn:datetime:ok]</column>
+            <column>[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[Datetime Set]</column>
+            <column>[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[attr:heartrate:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' domain-expand='false' field='[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[sum:heartrate:qk]' field-type='quantitative' scope='rows' type='space' />
+            <format attr='title' class='0' field='[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[sum:heartrate:qk]' scope='rows' value='Heart Rate [BPM]' />
+            <format attr='height' field='[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[Datetime Set]' value='68' />
+            <format attr='stroke-color' value='#e15759' />
+            <format attr='stroke-size' value='2' />
+            <format attr='tick-color' value='#e15759' />
+            <format attr='tick-color' scope='cols' value='#00000000' />
+            <format attr='tick-color' scope='rows' value='#00000000' />
+            <format attr='stroke-color' scope='rows' value='#f17b79' />
+            <format attr='stroke-color' scope='cols' value='#f17b79' />
+            <format attr='stroke-size' scope='cols' value='1' />
+            <format attr='line-visibility' scope='cols' value='on' />
+            <format attr='line-pattern-only' scope='cols' value='solid' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='display' field='[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[Datetime Set]' value='true' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='background-color' value='#f5eddc' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+          <style-rule element='refline'>
+            <format attr='stroke-color' value='#ff9d9a' />
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+            <format attr='line-pattern-only' scope='cols' value='solid' />
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='stroke-color' value='#ff9d9a81' />
+            <format attr='stroke-size' value='1' />
+            <format attr='line-visibility' value='on' />
+            <format attr='line-pattern-only' value='solid' />
+            <format attr='line-pattern-only' scope='cols' value='solid' />
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='line-pattern-only' value='solid' />
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <tooltip column='[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[attr:datetime:ok]' />
+              <tooltip column='[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[sum:duration:qk]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run bold='true' fontalignment='1'>Recorded Value</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Date &amp; Time:&#9;</run>
+                <run bold='true'><![CDATA[<[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[attr:datetime:ok]>]]></run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Heart Rate:&#9;</run>
+                <run bold='true'><![CDATA[<[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[sum:heartrate:qk]>]]></run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Duration (s):&#9;</run>
+                <run bold='true'><![CDATA[<[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[sum:duration:qk]>]]></run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='0.0099999997764825821' />
+                <format attr='mark-color' value='#000000' />
+                <format attr='mark-markers-mode' value='none' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[sum:heartrate:qk]</rows>
+        <cols>[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[Datetime Set]</cols>
+      </table>
+      <simple-id uuid='{4792F790-CE5A-4952-BDBF-4CA6FB7CF6C7}' />
+    </worksheet>
+    <worksheet name='HR Statistics Panel'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='cleaned_raw_hr_hr' name='federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4'>
+            <column caption='zero' datatype='integer' name='[Calculation_4102075598652256258]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='0' />
+            </column>
+            <column caption='HR stats' datatype='string' name='[Calculation_4102075598652944387 1]' role='measure' type='nominal'>
+              <calculation class='tableau' formula='&quot;HR Interval Stats&#10;[♥ BPM]&#10;&#10;Selected Time Interval&#10;4/20/2021&#10;|&#10;4/20/2022&#10;&#10;Min&#10;&quot; + STR(MIN([heartrate])) + &quot; BPM&#10;&#10;Max&#10;&quot; + STR(MAX([heartrate])) + &quot; BPM&#10;&#10;Mean&#10;&quot; + STR(INT(AVG([heartrate]))) + &quot; BPM&#10;&#10;Median&#10;&quot; + STR(INT(MEDIAN([heartrate]))) + &quot; BPM&quot;' />
+            </column>
+            <column caption='Datetime' datatype='datetime' name='[datetime]' role='dimension' type='ordinal' />
+            <column caption='Heartrate' datatype='integer' name='[heartrate]' role='measure' type='quantitative' />
+            <column-instance column='[datetime]' derivation='Month' name='[mn:datetime:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Calculation_4102075598652256258]' derivation='Sum' name='[sum:Calculation_4102075598652256258:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_4102075598652944387 1]' derivation='User' name='[usr:Calculation_4102075598652944387 1:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[Datetime Set]' />
+          <slices>
+            <column>[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[Datetime Set]</column>
+            <column>[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[mn:datetime:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='display' class='0' field='[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[sum:Calculation_4102075598652256258:qk]' scope='rows' value='false' />
+            <format attr='tick-color' scope='rows' value='#00000000' />
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='line-visibility' scope='cols' value='off' />
+            <format attr='tick-color' scope='cols' value='#00000000' />
+            <format attr='line-visibility' scope='rows' value='on' />
+            <format attr='line-pattern-only' scope='rows' value='solid' />
+            <format attr='stroke-color' scope='rows' value='#000000' />
+            <format attr='stroke-size' scope='rows' value='3' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='background-color' value='#f5eddc' />
+          </style-rule>
+          <style-rule element='dropline'>
+            <format attr='stroke-size' scope='rows' value='0' />
+            <format attr='line-visibility' scope='rows' value='off' />
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+          <style-rule element='refline'>
+            <format attr='stroke-size' scope='rows' value='0' />
+            <format attr='line-visibility' scope='rows' value='off' />
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='line-pattern-only' scope='rows' value='solid' />
+            <format attr='stroke-size' scope='rows' value='0' />
+            <format attr='line-visibility' scope='rows' value='off' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Text' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <text column='[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[usr:Calculation_4102075598652944387 1:nk]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run bold='true' fontalignment='1'>&lt;</run>
+                <run bold='true' fontalignment='1'>[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[usr:Calculation_4102075598652944387 1:nk]</run>
+                <run bold='true' fontalignment='1'>&gt;</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='size' value='3.7016575336456299' />
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[sum:Calculation_4102075598652256258:qk]</rows>
+        <cols />
+      </table>
+      <simple-id uuid='{450F6AA8-C40B-4216-8163-04321CC80801}' />
+    </worksheet>
+    <worksheet name='Selector'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='cleaned_raw_hr_hr' name='federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4'>
+            <column-instance column='[heartrate]' derivation='Attribute' name='[attr:heartrate:qk]' pivot='key' type='quantitative' />
+            <column caption='Datetime' datatype='datetime' name='[datetime]' role='dimension' type='ordinal' />
+            <column caption='Heartrate' datatype='integer' name='[heartrate]' role='measure' type='quantitative' />
+            <column-instance column='[Datetime Set]' derivation='InOut' name='[io:Datetime Set:nk]' pivot='key' type='nominal' />
+            <column-instance column='[datetime]' derivation='Month' name='[mn:datetime:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[Datetime Set]' />
+          <filter class='categorical' column='[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[io:Datetime Set:nk]'>
+            <groupfilter function='level-members' level='[io:Datetime Set:nk]' user:ui-exclude='true' user:ui-manual-selection='true' user:ui-manual-selection-all-when-empty='true' user:ui-manual-selection-is-empty='true' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[Datetime Set]</column>
+            <column>[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[io:Datetime Set:nk]</column>
+            <column>[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[mn:datetime:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' domain-expand='false' field='[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[attr:heartrate:qk]' field-type='quantitative' major-origin='0' major-spacing='100' minor-origin='0' minor-spacing='50' scope='rows' type='space' />
+            <format attr='title' class='0' field='[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[attr:heartrate:qk]' scope='rows' value='Heartrate' />
+            <format attr='display' class='0' field='[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[attr:heartrate:qk]' scope='rows' value='false' />
+            <format attr='height' field='[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[Datetime Set]' value='95' />
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+            <format attr='tick-color' value='#00000000' />
+            <format attr='line-visibility' scope='rows' value='on' />
+            <format attr='line-pattern-only' scope='rows' value='solid' />
+            <format attr='stroke-size' scope='rows' value='5' />
+            <format attr='stroke-color' scope='rows' value='#000000' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='border-style' data-class='total' scope='rows' value='solid' />
+            <format attr='border-width' data-class='total' scope='rows' value='5' />
+            <format attr='border-width' data-class='total' scope='cols' value='0' />
+            <format attr='border-style' data-class='total' scope='cols' value='none' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='display' field='[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[Datetime Set]' value='false' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='border-width' data-class='total' scope='cols' value='0' />
+            <format attr='border-style' data-class='total' scope='cols' value='none' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='background-color' value='#ffcccc' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+          <style-rule element='dropline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='refline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='stroke-size' scope='rows' value='0' />
+            <format attr='line-visibility' scope='rows' value='off' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='stroke-size' scope='rows' value='0' />
+            <format attr='line-visibility' scope='rows' value='off' />
+          </style-rule>
+          <style-rule element='table-div'>
+            <format attr='div-level' scope='cols' value='0' />
+            <format attr='line-pattern-only' scope='rows' value='solid' />
+            <format attr='stroke-size' scope='rows' value='0' />
+            <format attr='line-visibility' scope='rows' value='off' />
+            <format attr='line-pattern-only' scope='cols' value='solid' />
+            <format attr='stroke-color' scope='cols' value='#000000' />
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+          <style-rule element='header-div'>
+            <format attr='line-pattern-only' scope='rows' value='solid' />
+            <format attr='stroke-size' scope='rows' value='0' />
+            <format attr='line-visibility' scope='rows' value='off' />
+            <format attr='line-pattern-only' scope='cols' value='solid' />
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+          <style-rule element='quick-filter'>
+            <format attr='title' field='[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[mn:datetime:ok]' value='Month' />
+            <format attr='background-color' value='#00000000' />
+            <format attr='border-width' value='1' />
+            <format attr='border-style' value='solid' />
+            <format attr='border-color' value='#f6eadb' />
+          </style-rule>
+          <style-rule element='quick-filter-title'>
+            <format attr='text-align' value='center' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <customized-tooltip>
+              <formatted-text />
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='0.69165748357772827' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+                <format attr='mark-color' value='#1d1c23' />
+              </style-rule>
+              <style-rule element='trendline'>
+                <format attr='stroke-size' value='0' />
+                <format attr='line-visibility' value='off' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[attr:heartrate:qk]</rows>
+        <cols>[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[Datetime Set]</cols>
+      </table>
+      <simple-id uuid='{F1A9F076-4C8C-48B2-848A-B15FF343C506}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard _.fcp.AccessibleZoneTabOrder.true...enable-sort-zone-taborder='true' name='Dashboard'>
+      <style>
+        <style-rule element='table'>
+          <format attr='background-color' value='#f5eddc' />
+        </style-rule>
+        <style-rule element='dash-text'>
+          <format attr='text-orientation' id='dash-text_23' value='-90' />
+          <format attr='vertical-align' id='dash-text_23' value='center' />
+          <format attr='text-align' id='dash-text_23' value='center' />
+        </style-rule>
+      </style>
+      <size sizing-mode='automatic' />
+      <datasources>
+        <datasource caption='cleaned_raw_hr_hr' name='federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4' />
+      </datasources>
+      <datasource-dependencies datasource='federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4'>
+        <column caption='Datetime' datatype='datetime' name='[datetime]' role='dimension' type='ordinal' />
+        <column-instance column='[datetime]' derivation='Month' name='[mn:datetime:ok]' pivot='key' type='ordinal' />
+      </datasource-dependencies>
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98332' id='20' param='horz' type-v2='layout-flow' w='98912' x='544' y='834'>
+            <zone h='98332' id='7' param='horz' type-v2='layout-flow' w='98912' x='544' y='834'>
+              <zone h='98332' id='5' type-v2='layout-basic' w='80205' x='544' y='834'>
+                <zone h='84305' id='22' name='Graph' w='80205' x='544' y='834'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='14027' id='3' name='Selector' show-title='false' w='76290' x='4459' y='85139'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone forceUpdate='true' h='14027' id='23' type-v2='text' w='3915' x='544' y='85139'>
+                  <formatted-text>
+                    <run bold='true' fontsize='12' italic='true'>Drag Select &amp;</run>
+                    <run>Æ&#10;</run>
+                    <run bold='true' fontsize='12' italic='true'>Deselect Area</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone fixed-size='275' h='98332' id='24' is-fixed='true' type-v2='layout-basic' w='18707' x='80749' y='834'>
+                <zone h='76073' id='6' param='vert' type-v2='layout-flow' w='18707' x='80749' y='834'>
+                  <zone h='76073' id='11' name='HR Statistics Panel' show-title='false' w='18707' x='80749' y='834'>
+                    <layout-cache cell-count-w='1' minheight='100' type-h='scalable' type-w='cell' />
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                </zone>
+                <zone h='22259' id='25' param='vert' type-v2='layout-flow' w='18707' x='80749' y='76907'>
+                  <zone fixed-size='272' h='22259' id='18' is-fixed='true' mode='radiolist' name='Selector' param='[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[mn:datetime:ok]' show-mode='false' show-search='false' type-v2='filter' values='database' w='18707' x='80749' y='76907'>
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                </zone>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='850' minheight='850' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='31' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98066' id='30' param='vert' type-v2='layout-flow' w='98910' x='545' y='967'>
+                <zone fixed-size='280' h='84085' id='22' is-fixed='true' name='Graph' w='80190' x='545' y='967'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='75874' id='11' is-fixed='true' name='HR Statistics Panel' show-title='false' w='18720' x='80735' y='967'>
+                  <layout-cache cell-count-w='1' minheight='100' type-h='scalable' type-w='cell' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone forceUpdate='true' h='13981' id='23' type-v2='text' w='3925' x='545' y='85052'>
+                  <formatted-text>
+                    <run bold='true' fontsize='12' italic='true'>Drag Select &amp;</run>
+                    <run>Æ&#10;</run>
+                    <run bold='true' fontsize='12' italic='true'>Deselect Area</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='272' h='22192' id='18' mode='dropdown' name='Selector' param='[federated.0zpvrdy1lmfdaf1a5qekw1pvjhg4].[mn:datetime:ok]' show-mode='false' show-search='false' type-v2='filter' values='database' w='18720' x='80735' y='76841'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='104' h='13981' id='3' is-fixed='true' name='Selector' show-title='false' w='76265' x='4470' y='85052'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{EFF31D08-7103-453B-B29E-830E29FCDCCC}' />
+    </dashboard>
+  </dashboards>
+  <windows pres-mode='true' source-height='30'>
+    <window class='dashboard' maximized='true' name='Dashboard'>
+      <viewpoints>
+        <viewpoint name='Graph'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='HR Statistics Panel'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Selector'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='18' />
+      <simple-id uuid='{1AAAE160-B0F3-446A-8A07-D2F97600AE6D}' />
+    </window>
+    <window class='worksheet' name='Graph'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{B075C7E2-62A9-4A79-B11D-A2F6367EA9CF}' />
+    </window>
+    <window class='worksheet' name='HR Statistics Panel'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='fit-width' />
+      </viewpoint>
+      <simple-id uuid='{2FC0835A-FAEB-4776-9367-6913E546D206}' />
+    </window>
+    <window class='worksheet' name='Selector'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{E91B3198-01D6-4DC8-8AE0-2F8B0353469B}' />
+    </window>
+  </windows>
+</workbook>
