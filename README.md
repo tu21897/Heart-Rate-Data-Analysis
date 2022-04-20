@@ -1,3 +1,3 @@
-# Analyzing 7 months of heartrate data
+# Analyzing 7 months of heart rate data
 
 Visualization Link: 
