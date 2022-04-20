@@ -36,8 +36,23 @@ def main():
     # drop all rows with invalid data
     dest_df = rows_drop_invalid(pd.DataFrame.from_dict(dest_map), [int, str])
 
+    # keep data from selected months
+    dest_df = rows_keep_drop_months(dest_df, ['2022-04-', '2022-03-', '2021-10-', '2021-11-'])
+
     # output results to write csv
     dest_df.to_csv(write, float_format='%.3f', index=False)
+
+
+def rows_keep_drop_months(df, months):
+    rows = df.to_numpy()
+    ev = ""
+    for month in months:
+        ev += "\'" + month + "\'"+ " not in row and "
+    for i in range(len(rows)):
+        row = rows[i][0]
+        if (eval(ev[:len(ev)-5])):
+            df = df.drop(i)
+    return df
 
 # Drops all rows that do not have the specified types
 # returns the resulting data frame
