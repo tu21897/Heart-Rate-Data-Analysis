@@ -13,10 +13,14 @@
 #   convert varying datetime formats into uniform pacific time
 #   remove stray, obviously invalid data
 #
+# Transforms & populating data:
+#   groups & aggregates data points into singular intervals
+#   adds null columns for time intervals with no data
+#
 # Resulting columns:
-#   datetime (year/month/day/hour/minute/second) - string
-#   heartrate (bpm) - int
-#   duration (s) - int
+#   datetime (year-month-day hour:t*10minutes:00) - string
+#   heartrate (bpm) - float
+#   duration (s) - float
 #
 
 # Imports
@@ -52,15 +56,22 @@ def main():
     # sort data by datetimes
     dest_df = dest_df.sort_values(by=['datetime'], axis=0)
 
+    # generate equal interval time keys
     tk_map = {}
     tk_map.update(generate_tk_map_range(pd.to_datetime('2021-10-01 00:00:00'), pd.to_datetime('2021-12-01 00:00:00'), 10, 'm'))
     tk_map.update(generate_tk_map_range(pd.to_datetime('2022-03-01 00:00:00'), pd.to_datetime('2022-04-20 22:00:00'), 10, 'm'))
+
+    # group recorded data into time intervals and aggregate
     dest_df = rows_standardize_intervals(dest_df, tk_map)
 
     # output results to write csv
     dest_df.to_csv(write, index=False)
 
-
+# Takes a data frame and a time key map and 
+# returns a data frame group on equal intervals
+#
+# df - the data frame being accessed
+# tk_map - the time key map being accessed
 def rows_standardize_intervals(df, tk_map):
     ret_rows = []
     times = df['datetime'].to_numpy()
@@ -82,6 +93,13 @@ def rows_standardize_intervals(df, tk_map):
             ret_rows.append({'datetime': tk, 'heartrate': int(heartrate), 'duration': int(duration)})
     return pd.DataFrame.from_dict(ret_rows)
 
+# Populates a map with time keys from start to end
+# on an interval, returns the map
+#
+# start - the date to start at
+# end - the date to end at
+# interval - the value of the interval
+# unit - the unit of the interval
 def generate_tk_map_range(start, end, interval, unit):
     tk_map = {str(start): []}
     time = start
@@ -92,6 +110,11 @@ def generate_tk_map_range(start, end, interval, unit):
         nt += inc
     return tk_map
 
+# Drops all rows that are not in the specified month
+# returns the resulting data frame
+#
+# df - the data frame modified
+# months - the months where data will be kept
 def rows_keep_months(df, months):
     rows = df.to_numpy()
     ev = ""
