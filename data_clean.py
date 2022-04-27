@@ -35,6 +35,8 @@ write = 'cleaned_' + read
 dataframe = pd.read_csv(read)
 # Suppress numpy float sci form
 np.set_printoptions(suppress=True)
+# The date of the most recent data
+recent_data_date_string = '2022-04-28 00:00:00'
 
 def main():
     # resulting cleaned data frame
@@ -59,7 +61,7 @@ def main():
     # generate equal interval time keys
     tk_map = {}
     tk_map.update(generate_tk_map_range(pd.to_datetime('2021-10-01 00:00:00'), pd.to_datetime('2021-12-01 00:00:00'), 10, 'm'))
-    tk_map.update(generate_tk_map_range(pd.to_datetime('2022-03-01 00:00:00'), pd.to_datetime('2022-04-28 00:00:00'), 10, 'm'))
+    tk_map.update(generate_tk_map_range(pd.to_datetime('2022-03-01 00:00:00'), pd.to_datetime(recent_data_date_string), 10, 'm'))
 
     # group recorded data into time intervals and aggregate
     dest_df = rows_standardize_intervals(dest_df, tk_map)
