@@ -59,7 +59,7 @@ def main():
     # generate equal interval time keys
     tk_map = {}
     tk_map.update(generate_tk_map_range(pd.to_datetime('2021-10-01 00:00:00'), pd.to_datetime('2021-12-01 00:00:00'), 10, 'm'))
-    tk_map.update(generate_tk_map_range(pd.to_datetime('2022-03-01 00:00:00'), pd.to_datetime('2022-04-20 22:00:00'), 10, 'm'))
+    tk_map.update(generate_tk_map_range(pd.to_datetime('2022-03-01 00:00:00'), pd.to_datetime('2022-04-28 00:00:00'), 10, 'm'))
 
     # group recorded data into time intervals and aggregate
     dest_df = rows_standardize_intervals(dest_df, tk_map)
