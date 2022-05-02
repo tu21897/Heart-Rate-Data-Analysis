@@ -6,10 +6,10 @@
 #
 # Cleaning parameters:
 #   re-label columns to specific names
-#   convert to heartrate data to int type, if it is a range of values, take the mean
+#   convert to heartrate data to float type, if it is a range of values, take the mean
 #       this is possible because ranges are recorded with small intervals, and there
 #       isn't much variation in HR for these intervals, so it is reasonably accurate
-#   convert duration data to int type, sum if it is a range of values
+#   convert duration data to float type, sum if it is a range of values
 #   convert varying datetime formats into uniform pacific time
 #   remove stray, obviously invalid data
 #
@@ -18,7 +18,7 @@
 #   adds null columns for time intervals with no data
 #
 # Resulting columns:
-#   datetime (year-month-day hour:t*10minutes:00) - string
+#   datetime (YYYY-MM-DD HH:M0:00) - string
 #   heartrate (bpm) - float
 #   duration (s) - float
 #
@@ -35,8 +35,10 @@ write = 'cleaned_' + read
 dataframe = pd.read_csv(read)
 # Suppress numpy float sci form
 np.set_printoptions(suppress=True)
-# The date of the most recent data
-recent_data_date_string = '2022-04-28 00:00:00'
+
+# The date of the most recent data 
+# Date format - 'YYYY-MM-DD HH:MM:SS'
+recent_data_date = '2022-05-01 00:00:00'
 
 def main():
     # resulting cleaned data frame
@@ -61,7 +63,7 @@ def main():
     # generate equal interval time keys
     tk_map = {}
     tk_map.update(generate_tk_map_range(pd.to_datetime('2021-10-01 00:00:00'), pd.to_datetime('2021-12-01 00:00:00'), 10, 'm'))
-    tk_map.update(generate_tk_map_range(pd.to_datetime('2022-03-01 00:00:00'), pd.to_datetime(recent_data_date_string), 10, 'm'))
+    tk_map.update(generate_tk_map_range(pd.to_datetime('2022-03-01 00:00:00'), pd.to_datetime(recent_data_date), 10, 'm'))
 
     # group recorded data into time intervals and aggregate
     dest_df = rows_standardize_intervals(dest_df, tk_map)
@@ -70,7 +72,7 @@ def main():
     dest_df.to_csv(write, index=False)
 
 # Takes a data frame and a time key map and 
-# returns a data frame group on equal intervals
+# returns a data frame grouped on equal intervals
 #
 # df - the data frame being accessed
 # tk_map - the time key map being accessed
@@ -223,6 +225,7 @@ if __name__ == "__main__":
 #                                                     Data Format                                                     #
 #######################################################################################################################
 
+# ***** Provided by Withings *****
 # Below are the details of the data you've exported from Health Mate:
 
 # activities.csv: Activities history
