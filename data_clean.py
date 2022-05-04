@@ -18,9 +18,10 @@
 #   adds null columns for time intervals with no data
 #
 # Resulting columns:
-#   datetime (YYYY-MM-DD HH:M0:00) - string
-#   heartrate (bpm) - float
-#   duration (s) - float
+# Column name (data format) unit - data type
+# datetime (YYYY-MM-DD HH:M0:00) date&time - string
+# heartrate (###.0) bpm - float
+# duration (###.0) s - float
 #
 
 # Imports
@@ -36,9 +37,12 @@ dataframe = pd.read_csv(read)
 # Suppress numpy float sci form
 np.set_printoptions(suppress=True)
 
+# The months kept in the raw data
+months = ['2022-05-', '2022-04-', '2022-03-', '2021-10-', '2021-11-']
+
 # The date of the most recent data 
 # Date format - 'YYYY-MM-DD HH:MM:SS'
-recent_data_date = '2022-05-01 00:00:00'
+recent_data_date = '2022-05-04 10:00:00'
 
 def main():
     # resulting cleaned data frame
@@ -55,7 +59,7 @@ def main():
     dest_df = rows_drop_invalid(pd.DataFrame.from_dict(dest_map), [int, str])
 
     # keep data from selected months
-    dest_df = rows_keep_months(dest_df, ['2022-04-', '2022-03-', '2021-10-', '2021-11-'])
+    dest_df = rows_keep_months(dest_df, months)
 
     # sort data by datetimes
     dest_df = dest_df.sort_values(by=['datetime'], axis=0)
