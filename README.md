@@ -23,7 +23,7 @@ Below is the full breakdown of the data analysis process including: hardware/sof
 Both watches are clinically tested.
 
 Date range of hardware used:
-- *Data from 0ctober 1 2021 - April 19 2022 was recorded with the Withings Steel HR*
+- *Data from October 1 2021 - April 19 2022 was recorded with the Withings Steel HR*
 - *Data from April 20 2021 - May 4 2022 was recorded with the Withings ScanWatch*
 
 **ScanWatch**  
