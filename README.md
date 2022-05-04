@@ -9,9 +9,10 @@ While correlation does **NOT** mean causation, it can provide valuable insight o
 
 **Files**
 - *data_clean.py* - The script used for data cleaning and data transforms
-- *raw_hr_hr.csv* - The raw data exported from the Withings database
-- *cleaned_hr_hr.csv* - The resulting data after cleaning and transforms
 - *heartrate_visualized.twb* - The Tableau data visualization workbook
+- *raw_hr_hr.csv* - The raw data exported from the Withings database
+- *data_README.txt* - Withings data format and units for the raw data
+- *cleaned_hr_hr.csv* - The resulting data after cleaning and transforms
 
 Below is the full breakdown of the data analysis process including: hardware/software used for data collection, methodology for data cleaning and data transforms, and design decisions for the data visualization.
 
@@ -47,7 +48,7 @@ After an inital viewing of the data, these were the main concerns: dates and tim
 - Uniform timezone conversion to Pacific time
 - Uniform data type conversion
 - Drop error values
-- Isolated date range to 0ctober 1 2021 - November 30 2021, April 20 2021 - May 4 2022
+- Isolated date range to October 1 2021 - November 30 2021, April 20 2021 - May 4 2022
 
 *Data Transforms*
 - Aggregate data points into single 10 minute intervals
@@ -71,16 +72,16 @@ In order represent discrete chunks of continuous data, null data points needed t
 The data was modified into the following format to provide simplified values for analysis and allow for Tableau's data detection algorithm to function more smoothly.
 
 ## Visualization - Design Decisions
-This visualization was design to be interactive in order to easily interact with and isolate data during specific date ranges. The colors were chosen to imitate an ECG heart rate reading since doctors are most likely familiar with reading from ECG charts.
+This visualization was designed to be interactive in order to easily interact with and isolate data during specific date ranges. The color scheme and chart design was chosen to imitate an ECG heart rate reading chart. This is because doctors are more familiar with reading from ECG charts.
 
 *Main Graph*  
-The main line graph provides a detailed, general view of the data.
+The main line graph provides a detailed, overarching view of the data.
 
 *Stats Panel*  
-The statistics panel calculates statisical values from the selected date ranges. Min/Max was added to highlight possible problem areas. A mean weighted towards duration on the selected range was added (heart rates with higher durations were considered "more representative" of the range and subsequently weighted higher). This gives a general idea of heart rate values. There were difficulties calculating a weighted median through Tableau, so an unweighted median based on each 10 minute interval in the date range was added instead. This provides a general idea of heart rate values that are not skewed by outlier values. 
+The statistics panel calculates statisical values from the selected date ranges. Min/Max was added to highlight possible problem areas. A mean weighted towards duration on the date range was added (heart rates with higher durations were considered "more representative" of the date range and subsequently weighted higher). There were difficulties calculating a weighted median through Tableau, so an unweighted median based on each 10 minute interval in the date range was added instead. This provides a general idea of heart rate values that are not skewed by outlier values.
 
 *Date Range Slider & Selector*  
 The date range slider allows for exact control of the selected date ranges. However, it is slow in further isolating values within that range. An interactive drag selection panel was added to combat this.
 
 *Data Saturation & Warnings*  
-The data saturation value provides insight on how much data (recorded 10 minute intervals) is missing within the selected range. While the warnings provide information on the isolated data periods and potential sparse data. These were added to caution on drawing insights from possible inaccurate/incomplete data.
+The data saturation value provides insight on how much data (recorded 10 minute intervals) are missing within the selected range. The warnings provide information on the isolated data periods and potential sparse data. These were added to draw awareness towards possible inaccurate/incomplete data.
