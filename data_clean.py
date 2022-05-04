@@ -6,9 +6,7 @@
 #
 # Cleaning parameters:
 #   re-label columns to specific names
-#   convert to heartrate data to float type, if it is a range of values, take the mean
-#       this is possible because ranges are recorded with small intervals, and there
-#       isn't much variation in HR for these intervals, so it is reasonably accurate
+#   convert to heartrate data to float type, weighted mean if it is a range of values
 #   convert duration data to float type, sum if it is a range of values
 #   convert varying datetime formats into uniform pacific time
 #   remove stray, obviously invalid data
